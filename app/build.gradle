@@ -1,0 +1,138 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 28
+    defaultConfig {
+        applicationId "com.example.dell.shoegamev22"
+        minSdkVersion 19
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+
+    //fab
+    implementation 'com.github.clans:fab:1.6.4'
+
+    //floating action button with text
+    implementation 'com.github.dimorinny:floating-text-button:0.0.4'
+
+    //recycler view indicator
+    implementation 'com.ryanjeffreybrooks:indefinitepagerindicator:1.0.10'
+
+    //merlin. Used for checking internet connectivity and gives callbacks
+    implementation 'com.novoda:merlin:1.2.0'
+
+    //Easy save caching library
+    implementation 'com.github.Guilherme-HRamos:Easy-Save:1.2.1'
+
+    //ios style dialog library
+    implementation 'com.gdacciaro:iosdialog:1.0.3'
+
+    //input dialog
+    implementation 'com.afollestad.material-dialogs:core:3.1.1'
+    implementation 'com.orhanobut:dialogplus:1.11@aar'
+    //for androidx.
+    implementation 'com.lxj:xpopup:1.8.10-x'
+
+    //Spinner
+    implementation 'com.github.arcadefire:nice-spinner:1.4.3'
+
+    //custom edit text
+    implementation 'com.libizo:customedittext:1.0.6'
+
+    //fast adapter
+    implementation "com.mikepenz:fastadapter:3.3.1"
+
+    //custom nav bar
+    implementation 'com.gauravk.bubblenavigation:bubblenavigation:1.0.7'
+    implementation 'com.github.volsahin:bottomify-navigation-view:v1.0.1'
+
+    //Slider
+    implementation 'com.ramotion.fluidslider:fluid-slider:0.3.1'
+    //implementation 'com.github.florent37:android-slidr:1.0.4'
+
+    //expandable layout
+    implementation 'net.cachapa.expandablelayout:expandablelayout:2.9.2'
+
+    //loading views
+    implementation 'com.ldoublem.loadingview:loadingviewlib:1.0'
+
+    //lottie
+    implementation 'com.airbnb.android:lottie:3.0.7'
+
+    //filter
+    implementation 'com.github.Yalantis:SearchFilter:v1.0.4'
+
+    //Carousel
+    implementation 'com.synnapps:carouselview:0.1.5'
+
+    //glide image transform library
+    implementation 'jp.wasabeef:glide-transformations:4.1.0'
+
+    //Backendless apis
+    dependencies {
+        implementation group: 'com.backendless', name: 'backendless', version: '5.2.4'
+
+        // required for real-time database and real-time messaging
+        implementation('io.socket:socket.io-client:1.0.0') {
+            // excluding org.json which is provided by Android
+            exclude group: 'org.json', module: 'json'
+        }
+    }
+
+    //retrofit
+    implementation 'com.google.code.gson:gson:2.8.5'
+    implementation 'com.squareup.retrofit2:retrofit:2.6.1'
+    implementation 'com.squareup.retrofit2:converter-gson:2.6.1'
+
+    //Glide
+    implementation 'com.github.bumptech.glide:glide:4.9.0'
+
+    //material badge
+    implementation 'com.nex3z:notification-badge:1.0.2'
+
+    //top bar layout
+    implementation 'com.flyco.tablayout:FlycoTabLayout_Lib:2.1.2@aar'
+
+    //lifecycle
+    def lifecycle_version = "2.1.0"
+    // ViewModel and LiveData
+    implementation "androidx.lifecycle:lifecycle-extensions:$lifecycle_version"
+    annotationProcessor "androidx.lifecycle:lifecycle-compiler:$lifecycle_version"
+
+    //room
+    def room_version = "2.2.0-rc01"
+    implementation "androidx.room:room-runtime:$room_version"
+    annotationProcessor "androidx.room:room-compiler:$room_version"
+
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'com.google.android.material:material:1.1.0-alpha10'
+    implementation 'androidx.cardview:cardview:1.0.0'
+    implementation 'androidx.recyclerview:recyclerview:1.1.0-beta04'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test:runner:1.3.0-alpha02'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0-alpha02'
+
+    /*
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'androidx.appcompat:appcompat:1.0.0-beta01'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.2'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test:runner:1.1.0-alpha4'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0-alpha4'*/
+
+
+}

@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">ShoeGameV2.2</string>
+    <string name="featured">Featured</string>
+    <string name="collections">Collections</string>
+    <string name="best_deals">Best Deals</string>
+    <string name="popular">Popular</string>
+</resources>
