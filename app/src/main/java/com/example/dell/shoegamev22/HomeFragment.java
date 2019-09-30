@@ -1,5 +1,6 @@
 package com.example.dell.shoegamev22;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -15,12 +16,16 @@ import android.widget.Toast;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.airbnb.lottie.LottieAnimationView;
 import com.backendless.BackendlessUser;
+import com.example.dell.shoegamev22.adapters.HomeFragmentRecommendationsAdapter;
 import com.example.dell.shoegamev22.responseobjects.ShoeObject;
 import com.example.dell.shoegamev22.viewmodels.HomeFragmentViewModel;
 import com.lxj.xpopup.XPopup;
 import com.lxj.xpopup.interfaces.OnSelectListener;
 import com.mikepenz.fastadapter.FastAdapter;
+import com.mikepenz.fastadapter.IAdapter;
+import com.mikepenz.fastadapter.IItem;
 import com.mikepenz.fastadapter.adapters.ItemAdapter;
+import com.mikepenz.fastadapter.listeners.OnClickListener;
 import com.novoda.merlin.MerlinsBeard;
 import com.rbrooks.indefinitepagerindicator.IndefinitePagerIndicator;
 
@@ -52,12 +57,13 @@ public class HomeFragment extends Fragment {
     private LottieAnimationView bestDealsRecyclerViewLoadingView;
     ImageView womenCollectionImageView, menCollectionImageView, moreCollectionImageView, sportsShoesCollectionImageView, bestDealsRefreshView;
 
-    ImageView  bestDealsMoreOptionsButton;
+    ImageView bestDealsMoreOptionsButton, bestDealsShowAllButton;
     TextView bestDealsHeaderTextView;
 
     //create our FastAdapter which will manage everything
-    private ItemAdapter<ShoeObject> bestDealsItemAdapter;
-    private FastAdapter bestDealsFastAdapter;
+    private ItemAdapter<HomeFragmentRecommendationsAdapter> bestDealsItemAdapter;
+    private FastAdapter  < HomeFragmentRecommendationsAdapter> bestDealsFastAdapter;
+    private FastAdapter bestDealsFastAdapter2;
 
     //View models
     private HomeFragmentViewModel mHomeFragmentViewModel;
@@ -75,6 +81,10 @@ public class HomeFragment extends Fragment {
     private Boolean bestDealsLoadFailed = false;
 
 
+    //variables to be passed to browse recommendations activity
+    String currentWhereClause, currentSortByClause;
+
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -87,6 +97,7 @@ public class HomeFragment extends Fragment {
         bestDealsRefreshView = view.findViewById(R.id.homeFragmentBestDealsReloadIcon);
         bestDealsMoreOptionsButton = view.findViewById(R.id.homeFragmentBestDealsMoreOptionsIcon);
         bestDealsHeaderTextView = view.findViewById(R.id.mainActivityBestDealsHeader);
+        bestDealsShowAllButton = view.findViewById(R.id.homeFragmentBestDealsMoreIcon);
         bestDealsMoreOptionsButton.setEnabled(false);
 
 
@@ -147,11 +158,11 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                if(merlinsBeard.isConnected()){
+                if (merlinsBeard.isConnected()) {
 
                     showPopup();
 
-                }else {
+                } else {
 
 
                     Toast.makeText(getActivity(), "We can't find the Internet connection", Toast.LENGTH_SHORT).show();
@@ -160,10 +171,47 @@ public class HomeFragment extends Fragment {
                 }
 
 
-
-
             }
         });
+
+
+
+
+
+
+        //add on click to recycler view objects
+        bestDealsFastAdapter.withSelectable(true);
+       bestDealsFastAdapter.withOnClickListener(new OnClickListener<HomeFragmentRecommendationsAdapter>() {
+           @Override
+           public boolean onClick( View v, IAdapter<HomeFragmentRecommendationsAdapter> adapter, HomeFragmentRecommendationsAdapter item, int position) {
+               return false;
+           }
+       });
+
+               /*gender: 1 = neutral, 2 = male, 3 = female
+category number: 1 = none, 2 = best seller, 3 = recommended, 4 = discounted*/
+
+
+
+
+               bestDealsShowAllButton.setOnClickListener(new View.OnClickListener() {
+                   @Override
+                   public void onClick(View v) {
+
+
+
+                       Intent intent = new Intent(getActivity(), BrowseRecommendations.class);
+                       intent.putExtra("currentWhereClause",currentWhereClause);
+                       intent.putExtra("currentSortByClause",currentSortByClause);
+                       startActivity(intent);
+
+
+
+
+                   }
+               });
+
+
 
 
 
@@ -199,7 +247,6 @@ public class HomeFragment extends Fragment {
                 bestDealsMoreOptionsButton.setEnabled(false);
 
 
-
                 if (text.equals("Latest")) {
 
 
@@ -216,7 +263,8 @@ public class HomeFragment extends Fragment {
                         Log.d("MyLogsHomeFrag", "Home fragment: where clause from selection:" + globalGenderInt.toString() + " ,where clause: " + whereClause);
                         mHomeFragmentViewModel.requestBestDeals(whereClause, sortBy);
                         bestDealsHeaderTextView.setText("Cheapest");
-
+                        currentSortByClause = sortBy;
+                        currentWhereClause = whereClause;
 
 
                     } else {
@@ -228,6 +276,8 @@ public class HomeFragment extends Fragment {
                         Log.d("MyLogsHomeFrag", "Home fragment: where clause from selection: global gender int is null" + " ,where clause: " + whereClause);
                         mHomeFragmentViewModel.requestBestDeals(whereClause, sortBy);
                         bestDealsHeaderTextView.setText("Cheapest");
+                        currentSortByClause = sortBy;
+                        currentWhereClause = whereClause;
 
 
                     }
@@ -239,12 +289,13 @@ public class HomeFragment extends Fragment {
                     //https://api.backendless.com/05DBC061-3DE1-0252-FF3C-FBCECC684700/25314E66-30EB-BF2D-FF4B-31B310A6FD00/
                     // data/shoe?where=gender%20%3D%20'1'%20AND%20categoryNumber%20%3D%20'2'
 
-                    String whereClause = "gender = '" + globalGenderInt + "' AND categoryNumber = '2'"  ;
+                    String whereClause = "gender = '" + globalGenderInt + "' AND categoryNumber = '2'";
                     String sortBy = "created%20desc";
                     Log.d("MyLogsHomeFrag", "Home fragment: where clause from selection:" + globalGenderInt.toString() + " ,where clause: " + whereClause);
                     mHomeFragmentViewModel.requestBestDeals(whereClause, sortBy);
                     bestDealsHeaderTextView.setText("Best Sellers");
-
+                    currentSortByClause = sortBy;
+                    currentWhereClause = whereClause;
 
 
                 }
@@ -281,7 +332,6 @@ public class HomeFragment extends Fragment {
             bestDealsRefreshView.setEnabled(false);
             retrieveBestDealsFromCache();
             bestDealsHeaderTextView.setText("Best deals");
-
 
 
         }
@@ -339,6 +389,8 @@ public class HomeFragment extends Fragment {
     private void getBestDealItems(String whereClause) {
 
         String thisSortBy = "created%20desc";
+        currentWhereClause = whereClause; //passed to the browse recommendations activity;
+        currentSortByClause = thisSortBy;  //passed to the browse recommendations activity;
         mHomeFragmentViewModel.requestBestDeals(whereClause, thisSortBy);
         mHomeFragmentViewModel.getBestDealsRequestResult().observe(getActivity(), new Observer<Boolean>() {
             @Override
@@ -351,7 +403,7 @@ public class HomeFragment extends Fragment {
 
                             if (maps != null) {
 
-                                List<ShoeObject> mData = new ArrayList<>();
+                                List<HomeFragmentRecommendationsAdapter> mData = new ArrayList<>();
                                 mData = createShoeObjects(maps);
 
                                 bestDealsRecyclerView.setAdapter(bestDealsFastAdapter);
@@ -373,7 +425,6 @@ public class HomeFragment extends Fragment {
                             bestDealsMoreOptionsButton.setEnabled(true);
 
 
-
                         }
                     });
                 } else {
@@ -387,7 +438,6 @@ public class HomeFragment extends Fragment {
                     bestDealsMoreOptionsButton.setEnabled(true);
 
 
-
                 }
 
 
@@ -398,9 +448,9 @@ public class HomeFragment extends Fragment {
     }
 
 
-    private List<ShoeObject> createShoeObjects(List<Map> shoeObjectMaps) {
+    private List<HomeFragmentRecommendationsAdapter> createShoeObjects(List<Map> shoeObjectMaps) {
 
-        List<ShoeObject> shoeObjectData = new ArrayList<>();
+        List<HomeFragmentRecommendationsAdapter> shoeObjectData = new ArrayList<>();
 
         if (shoeObjectMaps != null) {
 
@@ -408,7 +458,7 @@ public class HomeFragment extends Fragment {
 
             for (int i = 0; i <= count; i++) {
 
-                ShoeObject holder = new ShoeObject();
+                HomeFragmentRecommendationsAdapter holder = new HomeFragmentRecommendationsAdapter();
                 holder.setMainImage((String) shoeObjectMaps.get(i).get("mainImage"));
                 holder.setPrice((String) shoeObjectMaps.get(i).get("price"));
                 holder.setTitle((String) shoeObjectMaps.get(i).get("title"));
@@ -501,11 +551,11 @@ public class HomeFragment extends Fragment {
     }
 
 
-    private void saveBestDealsToCache(List<ShoeObject> bestDealsArray) {
+    private void saveBestDealsToCache(List<HomeFragmentRecommendationsAdapter> bestDealsArray) {
 
-        new EasySave(getActivity()).saveModelAsync("best deals", bestDealsArray, new SaveAsyncCallback<List<ShoeObject>>() {
+        new EasySave(getActivity()).saveModelAsync("best deals", bestDealsArray, new SaveAsyncCallback<List<HomeFragmentRecommendationsAdapter>>() {
             @Override
-            public void onComplete(List<ShoeObject> shoeObjects) {
+            public void onComplete(List<HomeFragmentRecommendationsAdapter> shoeObjects) {
 
                 if (shoeObjects != null) {
 
@@ -531,11 +581,11 @@ public class HomeFragment extends Fragment {
 
     private void retrieveBestDealsFromCache() {
 
-        List<ShoeObject> bestDealsArray = new ArrayList<>();
+        List<HomeFragmentRecommendationsAdapter> bestDealsArray = new ArrayList<>();
 
-        new EasySave(getActivity()).saveModelAsync("best deals", bestDealsArray, new SaveAsyncCallback<List<ShoeObject>>() {
+        new EasySave(getActivity()).saveModelAsync("best deals", bestDealsArray, new SaveAsyncCallback<List<HomeFragmentRecommendationsAdapter>>() {
             @Override
-            public void onComplete(List<ShoeObject> shoeObjects) {
+            public void onComplete(List<HomeFragmentRecommendationsAdapter> shoeObjects) {
 
                 if (shoeObjects != null) {
 
