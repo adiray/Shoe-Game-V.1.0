@@ -121,4 +121,57 @@ public class BrowseRecommendationsRepository {
     }
 
 
+
+
+
+
+
+
+    /**
+     * gets the best deals items depending whichever where clause parameters you want
+     */
+
+    public void requestBestDeals2(DataQueryBuilder queryBuilder) {
+
+        Backendless.Data.of("shoe").find(queryBuilder, new AsyncCallback<List<Map>>() {
+            @Override
+            public void handleResponse(List<Map> response) {
+
+                if (response != null) {
+
+                    bestDealsShoesResponse.setValue(response);
+                    bestDealsRequestResult.setValue(true);
+                    Log.d("MyLogsBestDeal", "Browse recommendations repo: best deals retrieved successfully. response: " + response.toString());
+
+                }
+
+            }
+
+            @Override
+            public void handleFault(BackendlessFault fault) {
+
+                if (fault != null) {
+
+                    Log.d("MyLogsBestDeal", "Browse recommendations repo: best deals retrieval failed. error: " + fault.toString());
+
+                }
+
+                bestDealsRequestResult.setValue(false);
+
+            }
+        });
+
+
+    }
+
+    // Called reconfigure on a bitmap that is in use! This may cause graphical corruption
+
+
+
+
+
+
+
+
+
 }

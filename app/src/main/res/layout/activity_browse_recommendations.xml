@@ -27,7 +27,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_marginTop="16dp"
         android:background="@drawable/rounded_rect_top_radius"
         android:orientation="vertical">
@@ -35,7 +35,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent">
 
 
             <TextView
@@ -65,26 +65,81 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
 
+
+            <com.airbnb.lottie.LottieAnimationView
+                android:visibility="gone"
+                android:id="@+id/browseRecommendationsActivityLoadingView"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:lottie_autoPlay="true"
+                app:lottie_loop="true"
+                app:lottie_rawRes="@raw/refresh" />
+
+
+
+
+
+
+
+            <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+                app:layout_constraintTop_toBottomOf="@+id/browseRecommendationsActivityOptionsTV"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:id="@+id/browseRecommendationsActivityMainRecViewRefreshLayout"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="16dp">
+
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/browseRecommendationsActivityMainRecView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="32dp" />
+
+
+            </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+
+
+            <ru.dimorinny.floatingtextbutton.FloatingTextButton
+                android:visibility="invisible"
+                android:layout_gravity="center_horizontal"
+                android:id="@+id/browseRecommendationsActivityLoadMoreButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                app:floating_background_color="@color/myColorAccentDark"
+                app:floating_title="Load more"
+                app:floating_title_color="@android:color/white"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                />
+
+
+
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-            android:id="@+id/browseRecommendationsActivityMainRecViewRefreshLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="24dp"
-            android:layout_marginEnd="16dp">
 
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/browseRecommendationsActivityMainRecView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="32dp" />
 
 
-        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+
+
+
+
+
+
 
 
     </LinearLayout>

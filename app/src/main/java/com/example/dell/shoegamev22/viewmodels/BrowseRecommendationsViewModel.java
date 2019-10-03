@@ -1,6 +1,7 @@
 package com.example.dell.shoegamev22.viewmodels;
 
 
+import com.backendless.persistence.DataQueryBuilder;
 import com.example.dell.shoegamev22.repositories.BrowseRecommendationsRepository;
 
 import java.util.List;
@@ -29,6 +30,14 @@ public class BrowseRecommendationsViewModel extends ViewModel {
 
         browseRecommendationsRepository.requestBestDeals(whereClause, sortBy);
     }
+
+
+    public void requestBestDeals2(DataQueryBuilder queryBuilder) {
+
+        browseRecommendationsRepository.requestBestDeals2(queryBuilder);
+    }
+
+
 
     public LiveData<Boolean> getBestDealsRequestResult() {
 

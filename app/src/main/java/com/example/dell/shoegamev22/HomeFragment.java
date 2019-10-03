@@ -82,7 +82,7 @@ public class HomeFragment extends Fragment {
 
 
     //variables to be passed to browse recommendations activity
-    String currentWhereClause, currentSortByClause;
+    String currentWhereClause, currentSortByClause , currentRecommendationsCategory;
 
 
     @Nullable
@@ -99,6 +99,7 @@ public class HomeFragment extends Fragment {
         bestDealsHeaderTextView = view.findViewById(R.id.mainActivityBestDealsHeader);
         bestDealsShowAllButton = view.findViewById(R.id.homeFragmentBestDealsMoreIcon);
         bestDealsMoreOptionsButton.setEnabled(false);
+        bestDealsShowAllButton.setEnabled(false);
 
 
         //create merlin. library used to monitor internet connectivity
@@ -200,9 +201,11 @@ category number: 1 = none, 2 = best seller, 3 = recommended, 4 = discounted*/
 
 
 
+                       //currentRecommendationsCategory = (String) bestDealsHeaderTextView.getText();
                        Intent intent = new Intent(getActivity(), BrowseRecommendations.class);
                        intent.putExtra("currentWhereClause",currentWhereClause);
                        intent.putExtra("currentSortByClause",currentSortByClause);
+                       intent.putExtra("currentRecommendationsCategory",currentRecommendationsCategory);
                        startActivity(intent);
 
 
@@ -251,6 +254,8 @@ category number: 1 = none, 2 = best seller, 3 = recommended, 4 = discounted*/
 
 
                     bestDealsHeaderTextView.setText("Latest");
+                    currentRecommendationsCategory = "Latest";
+
                     requestInitialBestDeals(currentGlobalUser);
 
 
@@ -263,6 +268,7 @@ category number: 1 = none, 2 = best seller, 3 = recommended, 4 = discounted*/
                         Log.d("MyLogsHomeFrag", "Home fragment: where clause from selection:" + globalGenderInt.toString() + " ,where clause: " + whereClause);
                         mHomeFragmentViewModel.requestBestDeals(whereClause, sortBy);
                         bestDealsHeaderTextView.setText("Cheapest");
+                        currentRecommendationsCategory = "Cheapest";
                         currentSortByClause = sortBy;
                         currentWhereClause = whereClause;
 
@@ -276,6 +282,7 @@ category number: 1 = none, 2 = best seller, 3 = recommended, 4 = discounted*/
                         Log.d("MyLogsHomeFrag", "Home fragment: where clause from selection: global gender int is null" + " ,where clause: " + whereClause);
                         mHomeFragmentViewModel.requestBestDeals(whereClause, sortBy);
                         bestDealsHeaderTextView.setText("Cheapest");
+                        currentRecommendationsCategory = "Cheapest";
                         currentSortByClause = sortBy;
                         currentWhereClause = whereClause;
 
@@ -294,6 +301,7 @@ category number: 1 = none, 2 = best seller, 3 = recommended, 4 = discounted*/
                     Log.d("MyLogsHomeFrag", "Home fragment: where clause from selection:" + globalGenderInt.toString() + " ,where clause: " + whereClause);
                     mHomeFragmentViewModel.requestBestDeals(whereClause, sortBy);
                     bestDealsHeaderTextView.setText("Best Sellers");
+                    currentRecommendationsCategory = "Best Sellers";
                     currentSortByClause = sortBy;
                     currentWhereClause = whereClause;
 
@@ -423,6 +431,7 @@ category number: 1 = none, 2 = best seller, 3 = recommended, 4 = discounted*/
                             bestDealsRefreshView.setImageResource(R.drawable.ic_refresh_black_24dp);
                             bestDealsRefreshView.setEnabled(true);
                             bestDealsMoreOptionsButton.setEnabled(true);
+                            bestDealsShowAllButton.setEnabled(true);
 
 
                         }
@@ -436,6 +445,7 @@ category number: 1 = none, 2 = best seller, 3 = recommended, 4 = discounted*/
                     bestDealsRefreshView.setImageResource(R.drawable.ic_refresh_black_24dp);
                     bestDealsRefreshView.setEnabled(true);
                     bestDealsMoreOptionsButton.setEnabled(true);
+                    bestDealsShowAllButton.setEnabled(true);
 
 
                 }
