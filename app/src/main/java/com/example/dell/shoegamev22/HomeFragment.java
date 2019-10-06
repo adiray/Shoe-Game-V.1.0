@@ -57,7 +57,7 @@ public class HomeFragment extends Fragment {
     private LottieAnimationView bestDealsRecyclerViewLoadingView;
     ImageView womenCollectionImageView, menCollectionImageView, moreCollectionImageView, sportsShoesCollectionImageView, bestDealsRefreshView;
 
-    ImageView bestDealsMoreOptionsButton, bestDealsShowAllButton;
+    ImageView bestDealsMoreOptionsButton, bestDealsShowAllButton, collectionsMenButton;
     TextView bestDealsHeaderTextView;
 
     //create our FastAdapter which will manage everything
@@ -98,6 +98,7 @@ public class HomeFragment extends Fragment {
         bestDealsMoreOptionsButton = view.findViewById(R.id.homeFragmentBestDealsMoreOptionsIcon);
         bestDealsHeaderTextView = view.findViewById(R.id.mainActivityBestDealsHeader);
         bestDealsShowAllButton = view.findViewById(R.id.homeFragmentBestDealsMoreIcon);
+        collectionsMenButton = view.findViewById(R.id.homeFragmentCollectionsWomenIcon);
         bestDealsMoreOptionsButton.setEnabled(false);
         bestDealsShowAllButton.setEnabled(false);
 
@@ -215,6 +216,20 @@ category number: 1 = none, 2 = best seller, 3 = recommended, 4 = discounted*/
                });
 
 
+
+
+               collectionsMenButton.setOnClickListener(new View.OnClickListener() {
+                   @Override
+                   public void onClick(View v) {
+
+                       Intent intent = new Intent(getActivity(), ViewShoeDetails.class);
+                       startActivity(intent);
+
+
+
+
+                   }
+               });
 
 
 

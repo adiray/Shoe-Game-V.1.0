@@ -20,6 +20,7 @@ public class BrowseRecommendationsActivityRecViewAdapter extends AbstractItem<Br
     private String title;
     private String mainImage;
     private String price;
+    private String itemId;
 
 
     //GETTERS AND SETTERS
@@ -47,6 +48,15 @@ public class BrowseRecommendationsActivityRecViewAdapter extends AbstractItem<Br
     public String getTitle() {
         return title;
     }
+
+    public String getItemId() {
+        return itemId;
+    }
+
+    public void setItemId(String itemId) {
+        this.itemId = itemId;
+    }
+
 
 
     /*******************************************************************************************************************************************************

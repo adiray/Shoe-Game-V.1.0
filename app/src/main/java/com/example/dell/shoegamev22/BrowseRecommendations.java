@@ -25,7 +25,9 @@ import com.example.dell.shoegamev22.viewmodels.HomeFragmentViewModel;
 import com.lxj.xpopup.XPopup;
 import com.lxj.xpopup.interfaces.OnSelectListener;
 import com.mikepenz.fastadapter.FastAdapter;
+import com.mikepenz.fastadapter.IAdapter;
 import com.mikepenz.fastadapter.adapters.ItemAdapter;
+import com.mikepenz.fastadapter.listeners.OnClickListener;
 import com.novoda.merlin.MerlinsBeard;
 
 import org.jetbrains.annotations.NotNull;
@@ -80,7 +82,7 @@ public class BrowseRecommendations extends AppCompatActivity {
 
 
         //receive intent
-        Intent intent = getIntent();
+        final Intent intent = getIntent();
         passedInSortByClause = intent.getStringExtra("currentSortByClause");
         currentSortByClause = passedInSortByClause;
         passedInWhereClause = intent.getStringExtra("currentWhereClause");
@@ -184,6 +186,37 @@ public class BrowseRecommendations extends AppCompatActivity {
 
             }
         });
+
+
+
+
+
+
+
+        mainFastAdapter.withSelectable(true);
+        mainFastAdapter.withOnClickListener(new OnClickListener<BrowseRecommendationsActivityRecViewAdapter>() {
+            @Override
+            public boolean onClick( View v, IAdapter<BrowseRecommendationsActivityRecViewAdapter> adapter, BrowseRecommendationsActivityRecViewAdapter item, int position) {
+
+
+                Intent intent1 = new Intent(BrowseRecommendations.this,ViewShoeDetails.class);
+                intent1.putExtra("currentShoeId",item.getItemId());
+                startActivity(intent1);
+
+
+
+
+                return true;
+            }
+        });
+
+
+
+
+
+
+
+
 
 
 
@@ -419,6 +452,7 @@ public class BrowseRecommendations extends AppCompatActivity {
                 holder.setMainImage((String) shoeObjectMaps.get(i).get("mainImage"));
                 holder.setPrice((String) shoeObjectMaps.get(i).get("price"));
                 holder.setTitle((String) shoeObjectMaps.get(i).get("title"));
+                holder.setItemId((String) shoeObjectMaps.get(i).get("objectId"));
 
                 shoeObjectData.add(holder);
 

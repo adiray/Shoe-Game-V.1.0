@@ -20,6 +20,11 @@ android {
 
 dependencies {
 
+
+    //sticky scroll view
+    implementation 'com.github.nitrico.stickyscrollview:stickyscrollview:1.0.2'
+
+
     //fab
     implementation 'com.github.clans:fab:1.6.4'
 
