@@ -355,6 +355,8 @@ public class BrowseRecommendations extends AppCompatActivity {
 
                                     browseRecommendationsActivityLoadingView.setVisibility(View.GONE);
                                     mainRecViewSwipeRefreshLayout.setRefreshing(false);
+                                    isOnLoadMore = false;
+
 
                                     if(mData.size()>0){
 

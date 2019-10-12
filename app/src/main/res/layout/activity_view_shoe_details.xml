@@ -35,6 +35,18 @@
         android:orientation="vertical">
 
 
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/shoeDetailsActivityLoadingView"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            app:lottie_rawRes="@raw/refresh" />
+
+
         <com.github.nitrico.stickyscrollview.StickyScrollView
             android:id="@+id/shoeDetailsActivityMainScrollView"
             android:layout_width="match_parent"
@@ -53,20 +65,20 @@
 
 
                     <androidx.recyclerview.widget.RecyclerView
-                        android:minHeight="100dp"
                         android:id="@+id/shoeDetailsActivityMainImageRecView"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:minHeight="100dp"
                         app:layout_constraintBottom_toTopOf="@+id/shoeDetailsActivityMainImageRecViewIndicator"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <com.rbrooks.indefinitepagerindicator.IndefinitePagerIndicator
-                        android:layout_marginBottom="8dp"
                         android:id="@+id/shoeDetailsActivityMainImageRecViewIndicator"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
                         app:dotColor="@color/myColorGreyCardBg"
                         app:dotRadius="2.5dp"
                         app:layout_constraintBottom_toBottomOf="@+id/shoeDetailsActivityMainImageRecView"
@@ -102,7 +114,6 @@
                             android:layout_marginStart="16dp"
                             android:fontFamily="@font/quicksand_bold"
                             android:maxLines="1"
-                            android:text="Jordan Air Ones' Kendrick Drake zorb"
                             android:textColor="#000"
                             android:textSize="15sp"
                             app:layout_constraintStart_toStartOf="parent"
@@ -117,7 +128,6 @@
                             android:layout_marginTop="16dp"
                             android:fontFamily="@font/quicksand_bold"
                             android:maxLines="1"
-                            android:text="74$"
                             android:textColor="#000"
                             android:textSize="15sp"
                             app:layout_constraintStart_toStartOf="parent"
@@ -132,7 +142,6 @@
                             android:layout_marginTop="16dp"
                             android:fontFamily="@font/quicksand_light"
                             android:maxLines="1"
-                            android:text="In stock"
                             android:textColor="#7E7A7A"
                             android:textSize="12sp"
                             app:layout_constraintBottom_toBottomOf="@+id/shoeDetailsActivityProductPriceTv"
@@ -147,7 +156,6 @@
                             android:layout_marginTop="16dp"
                             android:fontFamily="@font/quicksand_light"
                             android:maxLines="1"
-                            android:text="Shipping: 3 days"
                             android:textColor="#7E7A7A"
                             android:textSize="12sp"
                             app:layout_constraintBottom_toBottomOf="@+id/shoeDetailsActivityProductStockInfoTv"
@@ -168,6 +176,550 @@
                             fab:fab_colorRipple="@color/myColorLightYellow" />
 
 
+                        <TextView
+                            android:id="@+id/shoeDetailsActivityProductBadgeTv1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="12dp"
+                            android:layout_marginEnd="16dp"
+                            android:background="@drawable/label_rounded_background_orange"
+                            android:fontFamily="@font/quicksand_bold"
+                            android:gravity="center"
+                            android:paddingStart="8dp"
+                            android:paddingTop="4dp"
+                            android:paddingEnd="8dp"
+                            android:paddingBottom="4dp"
+                            android:text="Best seller"
+                            android:textAlignment="center"
+                            android:textColor="#fff"
+                            android:textSize="12sp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/shoeDetailsActivityMenuFab" />
+
+
+                        <TextView
+                            android:id="@+id/shoeDetailsActivityProductBadgeTv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="12dp"
+                            android:layout_marginTop="12dp"
+                            android:layout_marginEnd="16dp"
+                            android:background="@drawable/label_rounded_background_purple"
+                            android:fontFamily="@font/quicksand_bold"
+                            android:gravity="center"
+                            android:paddingStart="8dp"
+                            android:paddingTop="4dp"
+                            android:paddingEnd="8dp"
+                            android:paddingBottom="4dp"
+                            android:text="Discount"
+                            android:textAlignment="center"
+                            android:textColor="#fff"
+                            android:textSize="12sp"
+                            app:layout_constraintStart_toEndOf="@+id/shoeDetailsActivityProductBadgeTv1"
+                            app:layout_constraintTop_toBottomOf="@+id/shoeDetailsActivityMenuFab" />
+
+
+                        <me.zhanghai.android.materialratingbar.MaterialRatingBar
+                            android:id="@+id/shoeDetailsActivityProductRatingBar"
+                            style="@style/Widget.MaterialRatingBar.RatingBar"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="32dp"
+                            android:layout_marginTop="24dp"
+
+
+                            android:maxHeight="25dp"
+                            android:minHeight="20dp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/shoeDetailsActivityProductBadgeTv1" />
+
+
+                        <TextView
+                            android:id="@+id/shoeDetailsActivityProductNumberOfRatingsTv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="4dp"
+                            android:fontFamily="@font/quicksand_light"
+                            android:maxLines="1"
+                            android:text="34 ratings"
+                            android:textColor="#7E7A7A"
+                            android:textSize="12sp"
+                            app:layout_constraintBottom_toBottomOf="@+id/shoeDetailsActivityProductRatingBar"
+                            app:layout_constraintStart_toEndOf="@+id/shoeDetailsActivityProductRatingBar"
+                            app:layout_constraintTop_toTopOf="@+id/shoeDetailsActivityProductRatingBar" />
+
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="16dp"
+                            android:background="#fff"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/shoeDetailsActivityProductRatingBar" />
+
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                </androidx.cardview.widget.CardView>
+
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/shoeDetailsActivityActionsLayoutCardView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="1dp"
+                    android:background="#FFF"
+                    android:paddingBottom="16dp"
+                    card_view:cardElevation="0dp">
+
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:padding="8dp">
+
+
+                        <TextView
+                            android:layout_marginBottom="16dp"
+                            android:layout_marginTop="16dp"
+                            android:textAlignment="center"
+                            android:id="@+id/shoeDetailsActivityActionsHeaderTv"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginEnd="16dp"
+                            android:fontFamily="@font/quicksand_bold"
+                            android:text="Menu"
+                            android:textColor="#000"
+                            android:textSize="15sp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/shoeDetailsActivityActionsWishListCardLayout"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="32dp"
+                            android:layout_marginTop="24dp"
+                            android:layout_marginBottom="8dp"
+                            app:cardCornerRadius="8dp"
+                            app:cardElevation="1dp"
+                            app:layout_constraintEnd_toStartOf="@+id/shoeDetailsActivityActionsShareCardLayout"
+                            app:layout_constraintHorizontal_bias="0.5"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/shoeDetailsActivityActionsHeaderTv">
+
+
+                            <LinearLayout
+                                android:id="@+id/shoeDetailsActivityActionsWishListLinearLayout"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="18dp"
+                                android:gravity="center"
+                                android:orientation="vertical">
+
+
+                                <ImageView
+                                    android:id="@+id/shoeDetailsActivityActionsWishListButton"
+                                    android:layout_width="18dp"
+                                    android:layout_height="18dp"
+                                    android:src="@drawable/heart_red_filled_ios" />
+
+
+                            </LinearLayout>
+
+
+                        </androidx.cardview.widget.CardView>
+
+
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/shoeDetailsActivityActionsShareCardLayout"
+
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="24dp"
+                            android:layout_marginBottom="8dp"
+                            app:cardCornerRadius="8dp"
+                            app:cardElevation="1dp"
+                            app:layout_constraintEnd_toStartOf="@+id/shoeDetailsActivityActionsReviewsCardLayout"
+                            app:layout_constraintHorizontal_bias="0.5"
+                            app:layout_constraintStart_toEndOf="@+id/shoeDetailsActivityActionsWishListCardLayout"
+                            app:layout_constraintTop_toBottomOf="@+id/shoeDetailsActivityActionsHeaderTv">
+
+
+                            <LinearLayout
+                                android:id="@+id/shoeDetailsActivityActionsShareLinearLayout"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="18dp"
+                                android:gravity="center"
+                                android:orientation="vertical">
+
+
+                                <ImageView
+                                    android:id="@+id/shoeDetailsActivityActionsShareButton"
+                                    android:layout_width="18dp"
+                                    android:layout_height="18dp"
+                                    android:src="@drawable/send_plane_purple_filled" />
+
+
+                            </LinearLayout>
+
+
+                        </androidx.cardview.widget.CardView>
+
+
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/shoeDetailsActivityActionsReviewsCardLayout"
+
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="24dp"
+                            android:layout_marginBottom="8dp"
+                            app:cardCornerRadius="8dp"
+                            app:cardElevation="1dp"
+                            app:layout_constraintEnd_toStartOf="@+id/shoeDetailsActivityActionsHelpCardLayout"
+                            app:layout_constraintHorizontal_bias="0.5"
+                            app:layout_constraintStart_toEndOf="@+id/shoeDetailsActivityActionsShareCardLayout"
+                            app:layout_constraintTop_toBottomOf="@+id/shoeDetailsActivityActionsHeaderTv">
+
+
+                            <LinearLayout
+                                android:id="@+id/shoeDetailsActivityActionsReviewsLinearLayout"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="18dp"
+                                android:gravity="center"
+                                android:orientation="vertical">
+
+
+                                <ImageView
+                                    android:id="@+id/shoeDetailsActivityActionsReviewsButton"
+                                    android:layout_width="18dp"
+                                    android:layout_height="18dp"
+                                    android:src="@drawable/star_yellow_filled" />
+
+
+                            </LinearLayout>
+
+
+                        </androidx.cardview.widget.CardView>
+
+
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/shoeDetailsActivityActionsHelpCardLayout"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="24dp"
+                            android:layout_marginEnd="32dp"
+                            android:layout_marginBottom="8dp"
+                            app:cardCornerRadius="8dp"
+                            app:cardElevation="1dp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.5"
+                            app:layout_constraintStart_toEndOf="@+id/shoeDetailsActivityActionsReviewsCardLayout"
+                            app:layout_constraintTop_toBottomOf="@+id/shoeDetailsActivityActionsHeaderTv">
+
+
+                            <LinearLayout
+                                android:id="@+id/shoeDetailsActivityActionsHelpLinearLayout"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="18dp"
+                                android:gravity="center"
+                                android:orientation="vertical">
+
+
+                                <ImageView
+                                    android:id="@+id/shoeDetailsActivityActionsHelpButton"
+                                    android:layout_width="18dp"
+                                    android:layout_height="18dp"
+                                    android:src="@drawable/speech_bubbles_blue_filled_ios" />
+
+
+                            </LinearLayout>
+
+
+                        </androidx.cardview.widget.CardView>
+
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="16dp"
+                            android:background="#fff"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/shoeDetailsActivityActionsHelpCardLayout" />
+
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/shoeDetailsActivitySizeLayoutCardView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#FFF"
+                    card_view:cardElevation="0dp">
+
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginBottom="8dp">
+
+
+                        <TextView
+                            android:id="@+id/shoeDetailsActivitySizeHeadlineTv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="16dp"
+                            android:fontFamily="@font/quicksand_bold"
+                            android:text="Size :"
+                            android:textColor="#000"
+                            android:textSize="15sp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+
+                        <TextView
+                            android:id="@+id/shoeDetailsActivitySizeRangeTv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginTop="16dp"
+                            android:fontFamily="@font/quicksand_bold"
+                            android:maxLines="1"
+                            android:text="40 to 45"
+                            android:textColor="#7A7E7E"
+                            android:textSize="15sp"
+                            app:layout_constraintStart_toEndOf="@+id/shoeDetailsActivitySizeHeadlineTv"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+
+                        <ImageView
+                            android:id="@+id/shoeDetailsActivitySizesDropdownIcon"
+                            android:layout_width="22dp"
+                            android:layout_height="22dp"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginEnd="16dp"
+                            android:src="@drawable/ic_keyboard_arrow_down_grey_24dp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                </androidx.cardview.widget.CardView>
+
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/shoeDetailsActivityColorLayoutCardView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#FFF"
+                    card_view:cardElevation="0dp">
+
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginBottom="8dp">
+
+
+                        <TextView
+                            android:id="@+id/shoeDetailsActivityColorHeadlineTv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="16dp"
+                            android:fontFamily="@font/quicksand_bold"
+                            android:text="Color :"
+                            android:textColor="#000"
+                            android:textSize="15sp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+
+                        <TextView
+                            android:id="@+id/shoeDetailsActivityColorRangeTv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginTop="16dp"
+                            android:fontFamily="@font/quicksand_bold"
+                            android:maxWidth="160dp"
+                            android:maxLines="1"
+                            android:text="Selected : None"
+                            android:textColor="#7A7E7E"
+                            android:textSize="15sp"
+                            app:layout_constraintStart_toEndOf="@+id/shoeDetailsActivityColorHeadlineTv"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/shoeDetailsActivityColor1"
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:layout_marginStart="32dp"
+                            android:layout_marginTop="24dp"
+                            app:cardBackgroundColor="@color/myColorGreyCardBg"
+                            app:cardCornerRadius="12dp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/shoeDetailsActivityColorHeadlineTv"
+                            card_view:cardElevation="1dp" />
+
+
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/shoeDetailsActivityColor2"
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="24dp"
+                            app:cardBackgroundColor="@color/myColorGreyCardBg"
+                            app:cardCornerRadius="12dp"
+                            app:layout_constraintStart_toEndOf="@+id/shoeDetailsActivityColor1"
+                            app:layout_constraintTop_toBottomOf="@+id/shoeDetailsActivityColorHeadlineTv"
+                            card_view:cardElevation="0dp" />
+
+
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/shoeDetailsActivityColor3"
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="24dp"
+                            app:cardBackgroundColor="@color/myColorGreyCardBg"
+                            app:cardCornerRadius="12dp"
+                            app:layout_constraintStart_toEndOf="@+id/shoeDetailsActivityColor2"
+                            app:layout_constraintTop_toBottomOf="@+id/shoeDetailsActivityColorHeadlineTv"
+                            card_view:cardElevation="0dp" />
+
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/shoeDetailsActivityColor4"
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="24dp"
+                            app:cardBackgroundColor="@color/myColorGreyCardBg"
+                            app:cardCornerRadius="12dp"
+                            app:layout_constraintStart_toEndOf="@+id/shoeDetailsActivityColor3"
+                            app:layout_constraintTop_toBottomOf="@+id/shoeDetailsActivityColorHeadlineTv"
+                            card_view:cardElevation="0dp" />
+
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/shoeDetailsActivityColor5"
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="24dp"
+                            app:cardBackgroundColor="@color/myColorGreyCardBg"
+                            app:cardCornerRadius="12dp"
+                            app:layout_constraintStart_toEndOf="@+id/shoeDetailsActivityColor4"
+                            app:layout_constraintTop_toBottomOf="@+id/shoeDetailsActivityColorHeadlineTv"
+                            card_view:cardElevation="0dp" />
+
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                </androidx.cardview.widget.CardView>
+
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/shoeDetailsActivityDescriptionLayoutCardView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#FFF"
+                    card_view:cardElevation="0dp">
+
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginBottom="8dp">
+
+
+                        <TextView
+                            android:id="@+id/shoeDetailsActivityDescriptionHeadlineTv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="16dp"
+                            android:fontFamily="@font/quicksand_bold"
+                            android:text="Description"
+                            android:textColor="#000"
+                            android:textSize="15sp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+
+                        <ImageView
+                            android:id="@+id/shoeDetailsActivityDescriptionDropdownIcon"
+                            android:layout_width="22dp"
+                            android:layout_height="22dp"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginEnd="16dp"
+                            android:src="@drawable/ic_keyboard_arrow_down_grey_24dp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+
+                        <net.cachapa.expandablelayout.ExpandableLayout
+                            android:id="@+id/shoeDetailsActivityDescriptionTextViewExpandableLayout"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            app:el_expanded="true"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/shoeDetailsActivityDescriptionHeadlineTv">
+
+
+                            <TextView
+                                android:id="@+id/shoeDetailsActivityDescriptionTextView"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="32dp"
+                                android:layout_marginTop="24dp"
+                                android:layout_marginEnd="32dp"
+                                android:layout_marginBottom="16dp"
+                                android:fontFamily="@font/quicksand_bold"
+                                android:lineSpacingExtra="1dp"
+                                android:text="@string/descriptiontext1"
+                                android:textColor="#7A7E7E"
+                                android:textSize="14sp" />
+
+
+                        </net.cachapa.expandablelayout.ExpandableLayout>
+
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
@@ -177,7 +729,7 @@
                 <ImageView
 
                     android:layout_width="match_parent"
-                    android:layout_height="500dp" />
+                    android:layout_height="300dp" />
 
 
             </LinearLayout>

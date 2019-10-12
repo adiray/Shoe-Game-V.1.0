@@ -658,3 +658,248 @@ category number: 1 = none, 2 = best seller, 3 = recommended, 4 = discounted*/
 
 
 //todo best deals retrieved multiple times on refresh
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+                        <LinearLayout
+                            android:id="@+id/shoeDetailsActivityActionsWishListLinearLayout"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="32dp"
+                            android:layout_marginTop="24dp"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            app:layout_constraintEnd_toStartOf="@+id/shoeDetailsActivityActionsShareLinearLayout"
+                            app:layout_constraintHorizontal_bias="0.5"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/shoeDetailsActivityActionsHeadlineTv">
+
+
+                            <ImageView
+                                android:id="@+id/shoeDetailsActivityActionsWishListButton"
+                                android:layout_width="25dp"
+                                android:layout_height="25dp"
+                                android:src="@drawable/wishlist_blue_colored_bg" />
+
+
+                            <TextView
+                                android:id="@+id/shoeDetailsActivityActionsWishListButtonTextTv"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="8dp"
+                                android:fontFamily="@font/quicksand_bold"
+                                android:text="wishlist"
+                                android:textColor="#7A7E7E"
+                                android:textSize="12sp"
+
+                                />
+
+
+                        </LinearLayout>
+
+
+                        <LinearLayout
+                            android:id="@+id/shoeDetailsActivityActionsShareLinearLayout"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="24dp"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            app:layout_constraintEnd_toStartOf="@+id/shoeDetailsActivityActionsReviewsLinearLayout"
+                            app:layout_constraintHorizontal_bias="0.5"
+                            app:layout_constraintStart_toEndOf="@+id/shoeDetailsActivityActionsWishListLinearLayout"
+                            app:layout_constraintTop_toBottomOf="@+id/shoeDetailsActivityActionsHeadlineTv">
+
+
+                            <ImageView
+                                android:id="@+id/shoeDetailsActivityActionsShareButton"
+                                android:layout_width="25dp"
+                                android:layout_height="25dp"
+                                android:src="@drawable/share_green_colored_bg" />
+
+
+                            <TextView
+                                android:id="@+id/shoeDetailsActivityActionsShareButtonTextTv"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="8dp"
+                                android:fontFamily="@font/quicksand_bold"
+                                android:text="Share"
+                                android:textColor="#7A7E7E"
+                                android:textSize="12sp"
+                                app:layout_constraintEnd_toEndOf="@+id/shoeDetailsActivityActionsShareButton"
+                                app:layout_constraintStart_toStartOf="@+id/shoeDetailsActivityActionsShareButton"
+                                app:layout_constraintTop_toBottomOf="@+id/shoeDetailsActivityActionsShareButton" />
+
+
+                        </LinearLayout>
+
+
+                        <LinearLayout
+                            android:id="@+id/shoeDetailsActivityActionsReviewsLinearLayout"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="24dp"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            app:layout_constraintEnd_toStartOf="@+id/shoeDetailsActivityActionsHelpLinearLayout"
+                            app:layout_constraintHorizontal_bias="0.5"
+                            app:layout_constraintStart_toEndOf="@+id/shoeDetailsActivityActionsShareLinearLayout"
+                            app:layout_constraintTop_toBottomOf="@+id/shoeDetailsActivityActionsHeadlineTv">
+
+
+                            <ImageView
+                                android:id="@+id/shoeDetailsActivityActionsReviewsButton"
+                                android:layout_width="25dp"
+                                android:layout_height="25dp"
+                                android:src="@drawable/review_star_blue_colored" />
+
+
+                            <TextView
+                                android:id="@+id/shoeDetailsActivityActionsReviewButtonTextTv"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="8dp"
+                                android:fontFamily="@font/quicksand_bold"
+                                android:text="Reviews"
+                                android:textColor="#7A7E7E"
+                                android:textSize="12sp"
+                                app:layout_constraintEnd_toEndOf="@+id/shoeDetailsActivityActionsShareButton"
+                                app:layout_constraintStart_toStartOf="@+id/shoeDetailsActivityActionsShareButton"
+                                app:layout_constraintTop_toBottomOf="@+id/shoeDetailsActivityActionsShareButton" />
+
+
+                        </LinearLayout>
+
+
+                        <LinearLayout
+                            android:id="@+id/shoeDetailsActivityActionsHelpLinearLayout"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="24dp"
+                            android:layout_marginEnd="32dp"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.5"
+                            app:layout_constraintStart_toEndOf="@+id/shoeDetailsActivityActionsReviewsLinearLayout"
+                            app:layout_constraintTop_toBottomOf="@+id/shoeDetailsActivityActionsHeadlineTv">
+
+
+                            <ImageView
+                                android:id="@+id/shoeDetailsActivityActionsHelpButton"
+                                android:layout_width="25dp"
+                                android:layout_height="25dp"
+                                android:src="@drawable/faq_blue_colored_bg" />
+
+
+                            <TextView
+                                android:id="@+id/shoeDetailsActivityActionsHelpButtonTextTv"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="8dp"
+                                android:fontFamily="@font/quicksand_bold"
+                                android:text="Support"
+                                android:textColor="#7A7E7E"
+                                android:textSize="12sp"
+                                app:layout_constraintEnd_toEndOf="@+id/shoeDetailsActivityActionsShareButton"
+                                app:layout_constraintStart_toStartOf="@+id/shoeDetailsActivityActionsShareButton"
+                                app:layout_constraintTop_toBottomOf="@+id/shoeDetailsActivityActionsShareButton" />
+
+
+                        </LinearLayout>*/
+
