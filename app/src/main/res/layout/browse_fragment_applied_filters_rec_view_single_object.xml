@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/browseFragmentAppliedFiltersRecViewSingleItemFilterNameTv"
+    android:layout_marginStart="8dp"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/rounded_rect_8dp"
+    android:fontFamily="@font/quicksand_bold"
+    android:paddingStart="8dp"
+    android:paddingTop="6dp"
+    android:paddingEnd="8dp"
+    android:paddingBottom="6dp"
+    android:text="Men"
+    android:textColor="#7E7A7A"
+    android:textSize="12sp" />
+
+
+
+
+
+

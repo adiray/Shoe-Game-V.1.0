@@ -26,6 +26,26 @@
             app:layout_constraintTop_toTopOf="parent" />
 
 
+
+
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:visibility="gone"
+            android:id="@+id/browseFragmentLoadingView"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            app:lottie_rawRes="@raw/refresh" />
+
+
+
+
+
+
         <TextView
             android:id="@+id/browseFragmentSearchTv"
             android:layout_width="wrap_content"
@@ -132,6 +152,17 @@
                         app:layout_constraintTop_toTopOf="parent" />
 
 
+                    <ImageView
+                        android:id="@+id/browseFragmentCategoryFilterMoreIcon"
+                        android:layout_width="18dp"
+                        android:layout_height="20dp"
+                        android:layout_marginTop="32dp"
+                        android:layout_marginEnd="32dp"
+                        android:src="@drawable/right_arrow_black_simple"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/browseFragmentCategoryFilterRecView"
                         android:layout_width="match_parent"
@@ -192,12 +223,10 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-
-
                 <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_marginTop="16dp"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp">
 
 
                     <TextView
@@ -216,23 +245,23 @@
 
 
                     <com.suke.widget.SwitchButton
-                        android:layout_marginStart="8dp"
-                        app:sb_checked_color="@color/myColorAccentDark"
                         android:id="@+id/browseFragmentAndOrSwitch"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
                         app:layout_constraintBottom_toBottomOf="@+id/browseFragmentAndOrSwitchAndTv"
                         app:layout_constraintStart_toEndOf="@+id/browseFragmentAndOrSwitchAndTv"
-                        app:layout_constraintTop_toTopOf="@+id/browseFragmentAndOrSwitchAndTv" />
+                        app:layout_constraintTop_toTopOf="@+id/browseFragmentAndOrSwitchAndTv"
+                        app:sb_checked_color="@color/myColorAccentDark" />
 
 
                     <TextView
-                        android:layout_marginTop="32dp"
-
                         android:id="@+id/browseFragmentAndOrSwitchOrTv"
+
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
+                        android:layout_marginTop="32dp"
                         android:layout_marginEnd="24dp"
                         android:fontFamily="@font/quicksand_bold"
                         android:text="Or"
@@ -242,20 +271,14 @@
                         app:layout_constraintTop_toTopOf="parent" />
 
 
-
-
-
-
-
-
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
 
                 <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_marginBottom="48dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="48dp">
+                    android:layout_marginTop="48dp"
+                    android:layout_marginBottom="48dp">
 
 
                     <androidx.appcompat.widget.AppCompatButton
@@ -286,10 +309,7 @@
                         app:layout_constraintTop_toTopOf="parent" />
 
 
-
-
                 </androidx.constraintlayout.widget.ConstraintLayout>
-
 
 
             </LinearLayout>
@@ -299,6 +319,151 @@
 
 
     </net.cachapa.expandablelayout.ExpandableLayout>
+
+
+
+
+
+
+
+
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <androidx.core.widget.NestedScrollView
+            android:visibility="gone"
+            android:id="@+id/browseFragmentNoResultsLayout"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+
+
+
+
+                <com.airbnb.lottie.LottieAnimationView
+                    app:lottie_autoPlay="true"
+                    app:lottie_rawRes="@raw/empty_box"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginEnd="24dp"
+                    android:layout_marginStart="24dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:id="@+id/browseFragmentNoResultsAnimationView"
+                    android:layout_width="match_parent"
+                    android:layout_height="300dp" />
+
+
+
+
+                <TextView
+                    android:layout_marginTop="8dp"
+                    app:layout_constraintStart_toStartOf="@+id/browseFragmentNoResultsAnimationView"
+                    app:layout_constraintEnd_toEndOf="@+id/browseFragmentNoResultsAnimationView"
+                    app:layout_constraintTop_toBottomOf="@+id/browseFragmentNoResultsAnimationView"
+                    android:fontFamily="@font/quicksand_bold"
+                    android:textAlignment="center"
+                    android:textColor="#7a7e7e"
+                    android:textSize="20sp"
+                    android:text="No results"
+                    android:id="@+id/browseFragmentNoResultsTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+
+
+                <TextView
+                    app:layout_constraintTop_toBottomOf="@+id/browseFragmentNoResultsTextView"
+                    app:layout_constraintEnd_toEndOf="@+id/browseFragmentNoResultsTextView"
+                    app:layout_constraintStart_toStartOf="@+id/browseFragmentNoResultsTextView"
+                    android:fontFamily="@font/quicksand_bold"
+                    android:textAlignment="center"
+                    android:layout_margin="8dp"
+                    android:textColor="#7a7e7e"
+                    android:textSize="12sp"
+                    android:text="Try using 'OR' instead of 'AND'"
+                    android:id="@+id/browseFragmentNoResultsTextViewTips"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        </androidx.core.widget.NestedScrollView>
+
+
+
+
+
+
+
+
+
+
+
+
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:id="@+id/browseFragmentResultsMainRecViewSwipeRefresh"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/browseFragmentResultsMainRecView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+             />
+
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+
+
+    <ru.dimorinny.floatingtextbutton.FloatingTextButton
+        android:visibility="invisible"
+        android:id="@+id/browseFragmentLoadMoreButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        app:floating_background_color="@color/myColorAccentDark"
+        app:floating_title="Load more"
+        app:floating_title_color="@android:color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+
+        />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+
+
+
+
+
 
 
 </LinearLayout>

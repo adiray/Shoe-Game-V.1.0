@@ -153,6 +153,8 @@ public class BrowseRecommendations extends AppCompatActivity {
         //requestBestDeals(passedInWhereClause,passedInSortByClause);
 
 
+
+        //add on scroll listener to the rec view
         mainRecView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrollStateChanged(@NotNull RecyclerView recyclerView, int newState) {

@@ -19,6 +19,10 @@ public class BrowseFragmentRepository {
     //LIVE DATA
     public MutableLiveData<List<Map>> tagsRequestResponse = new MutableLiveData<>();
     public MutableLiveData<Boolean> tagsRequestResult = new MutableLiveData<>();
+    public MutableLiveData<List<Map>> categoriesRequestResponse = new MutableLiveData<>();
+    public MutableLiveData<Boolean> categoriesRequestResult = new MutableLiveData<>();
+    public MutableLiveData<List<Map>> shoesRequestResponse = new MutableLiveData<>();
+    public MutableLiveData<Boolean> shoesRequestResult = new MutableLiveData<>();
 
 
     private static BrowseFragmentRepository instance;
@@ -35,9 +39,57 @@ public class BrowseFragmentRepository {
     }
 
 
+    /***
+     *CATEGORIES ARE JUST TAGS OF THE TYPE 'CATEGORY' SO WE REQUEST THEM FROM THE TAGS TABLE WITH A WHERE CLAUSE THAT SPECIFIES TO RETURN THE TAGS WITH THE APPROPRIATE TYPE
+     */
+
+    public void requestCategories(DataQueryBuilder queryBuilder){
+
+
+        Backendless.Data.of("tags").find(queryBuilder, new AsyncCallback<List<Map>>() {
+            @Override
+            public void handleResponse(List<Map> response) {
+
+                if (!response.isEmpty()) {
+
+
+                    categoriesRequestResult.setValue(true);
+                    categoriesRequestResponse.setValue(response);
+                    Log.d("MyLogsCategories", "Browse fragment repo: categories retrieved successfully. response: " + response.toString());
+
+
+                } else {
+
+
+                    categoriesRequestResult.setValue(false);
+                    Log.d("MyLogsCategories", "Browse fragment repo: categories retrieved successfully but response is empty. response: " + response.toString());
+
+
+                }
+
+
+            }
+
+            @Override
+            public void handleFault(BackendlessFault fault) {
+
+
+                categoriesRequestResult.setValue(false);
+
+                if (fault != null) {
+
+                    Log.d("MyLogsCategories", "Browse fragment repo: categories retrieval failed. error: " + fault.getMessage());
+
+                }
+
+
+            }
+        });
 
 
 
+
+    }
 
 
 
@@ -85,6 +137,60 @@ public class BrowseFragmentRepository {
 
             }
         });
+
+
+    }
+
+
+
+
+    public void requestShoes(DataQueryBuilder queryBuilder){
+
+
+        Backendless.Data.of("shoe").find(queryBuilder, new AsyncCallback<List<Map>>() {
+            @Override
+            public void handleResponse(List<Map> response) {
+
+                if (response!=null) {
+
+
+                    shoesRequestResult.setValue(true);
+                    shoesRequestResponse.setValue(response);
+                    Log.d("MyLogsShoes", "Browse fragment repo: shoes retrieved successfully. response: " + response.toString());
+
+
+                } else {
+
+
+                    tagsRequestResult.setValue(false);
+                    Log.d("MyLogsShoes", "Browse fragment repo: shoes retrieved successfully but response is empty. response: " + response.toString());
+
+
+                }
+
+
+            }
+
+            @Override
+            public void handleFault(BackendlessFault fault) {
+
+
+                tagsRequestResult.setValue(false);
+
+                if (fault != null) {
+
+                    Log.d("MyLogsShoes", "Browse fragment repo: shoes retrieval failed. error: " + fault.getMessage());
+
+                }
+
+
+            }
+        });
+
+
+
+
+
 
 
     }

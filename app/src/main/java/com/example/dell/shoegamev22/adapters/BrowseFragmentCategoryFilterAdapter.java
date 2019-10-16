@@ -74,10 +74,10 @@ public class BrowseFragmentCategoryFilterAdapter extends AbstractItem<BrowseFrag
 
     }
 
-    protected static class BrowseFragmentCategoryFilterAdapterViewHolder extends RecyclerView.ViewHolder {
+    public static class BrowseFragmentCategoryFilterAdapterViewHolder extends RecyclerView.ViewHolder {
 
 
-        TextView categoryNameTv;
+        public TextView categoryNameTv;
 
         public BrowseFragmentCategoryFilterAdapterViewHolder(@NonNull View itemView) {
             super(itemView);

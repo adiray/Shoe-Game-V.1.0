@@ -23,6 +23,16 @@ public class BrowseFragmentViewModel extends ViewModel {
 
 
 
+    public void getAllCategories(DataQueryBuilder queryBuilder){
+
+
+        browseFragmentRepository.requestCategories(queryBuilder);
+
+
+    }
+
+
+
 
 
     public void getAllTags(DataQueryBuilder queryBuilder){
@@ -35,6 +45,35 @@ public class BrowseFragmentViewModel extends ViewModel {
 
 
 
+    public void getShoes(DataQueryBuilder queryBuilder){
+
+
+        browseFragmentRepository.requestShoes(queryBuilder);
+
+
+    }
+
+
+
+
+
+
+
+
+
+    public LiveData<List<Map>> getCategoriesRequestResponse(){
+
+
+        return browseFragmentRepository.categoriesRequestResponse;
+    }
+
+
+    public LiveData<Boolean> getCategoriesRequestResult(){
+
+        return browseFragmentRepository.categoriesRequestResult;
+    }
+
+
     public LiveData<List<Map>> getTagsRequestResponse(){
 
 
@@ -45,6 +84,20 @@ public class BrowseFragmentViewModel extends ViewModel {
     public LiveData<Boolean> getTagsRequestResult(){
 
         return browseFragmentRepository.tagsRequestResult;
+    }
+
+
+
+    public LiveData<List<Map>> getShoesRequestResponse(){
+
+
+        return browseFragmentRepository.shoesRequestResponse;
+    }
+
+
+    public LiveData<Boolean> getShoesRequestResult(){
+
+        return browseFragmentRepository.shoesRequestResult;
     }
 
 
