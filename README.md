@@ -9,7 +9,7 @@
 
 
 
-<h2> NOTE: The app uses Retrofit and Glide to optimize data and image processing and is build using MVVM architecture. For other libraries used, please check the imports and comments in the gradle file.</h2>
+<h2> NOTE: The app uses Retrofit and Glide to optimize data and image processing and is built using MVVM architecture. For other libraries used, please check the imports and comments in the gradle file.</h2>
 
 <h2> NOTE: FIND SCREENSHOTS HERE: https://github.com/adiray/Shoe-Game-V.1.0/tree/master/Media </h2>
 
@@ -21,12 +21,12 @@
  
  <h3>SCREENSHOTS</h3>
 
-<p align="center"><img width=95% align="center"src="https://github.com/adiray/Muhinga-V.1.0/blob/master/Art/houses%20combined.png" title="MUHINGA" alt="MUHINGA APP">
+<p align="center"><img width=95% align="center"src="https://github.com/adiray/Shoe-Game-V.1.0/blob/master/Media/main%20pages.png" title="MUHINGA" alt="MUHINGA APP">
  </p>
 
 <br>
 
-<p align="left"> The main activity contains 3 different fragments. The user can navigate through them using the floating bar. On the home page , we have the featured items with a filter to view them in any format the viewr wants. 
+<p align="left"> The main activity contains 3 different fragments. The user can navigate through them using the floating bar. On the home page , we have the featured items with a filter to view them in any format the viewer wants. 
 In the browse fragment, there are various filters for the user to browse all the products within the database convieniently. It also has a search button.</p>
 
 
