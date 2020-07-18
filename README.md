@@ -50,9 +50,12 @@ In the browse fragment, there are various filters for the user to browse all the
 
 <br>
 
-<p align="center"> In this activity the user can perform a text search for shoes. There is guiding text and the last two searches are stored and displayed at the bottom of the search bar.. The venues can be sorted using various filters including; size, price and location </p>
+<p align="left"> In this activity the user can perform a text search for shoes. There is guiding text and the last two searches are stored and displayed at the bottom of the search bar.. The venues can be sorted using various filters including; size, price and location </p>
 
 <br>
+
+
+
 
 
 
